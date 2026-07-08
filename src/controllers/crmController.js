@@ -47,4 +47,15 @@ async function getRevenue(req, res) {
     });
 }
 
-module.exports = { getAllOrders, getRevenue };
+// GET /api/crm/stores — list every store on the platform, with owner info
+async function getAllStores(req, res) {
+    const stores = await prisma.store.findMany({
+        include: {
+            owner: { select: { id: true, name: true, email: true } },
+        },
+        orderBy: { createdAt: 'desc' },
+    });
+    res.json({ stores });
+}
+
+module.exports = { getAllOrders, getRevenue, getAllStores };

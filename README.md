@@ -24,6 +24,11 @@ Multi-tenant store management SaaS API. Store owners sign up, create branded sto
 ```
 
 2. Create a `.env` file in the root with:
+```
+DATABASE_URL=your_postgres_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
 
 3. Run the database migrations:
 ```bash
